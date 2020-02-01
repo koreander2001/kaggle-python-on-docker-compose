@@ -1,11 +1,12 @@
 version: '3'
 services:
   jupyter:
-    image: kaggle/python
+    build: .
     ports:
       - "8888:8888"
     volumes:
       - ./working:/tmp/working
+      - ./.jupyter:/root/.jupyter
     working_dir: /tmp/working
     command: jupyter notebook --no-browser --ip="0.0.0.0" --notebook-dir=/tmp/working --allow-root --NotebookApp.token=''
 
